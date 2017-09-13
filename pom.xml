@@ -27,7 +27,7 @@
 
     <groupId>org.plos.maven</groupId>
     <artifactId>docker-maven-plugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>Maven Docker Plugin</name>
