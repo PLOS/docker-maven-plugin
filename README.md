@@ -2,42 +2,26 @@ Docker Maven Plugin
 ===================
 
 This Maven plugin attaches a shutdown hook to the jvm which stops and removes
-the Docker instance used in NED's build process (neddb).
+the Docker instance used in the testing phase of the Maven lifecycle.
 
-Build/Deploy (Local Maven Repo)
--------------------------------
+Building
+--------
 
-    mvn clean install
+    mvn clean package
 
-Deploy (Ambra Maven Repo)
--------------------------
+Deploying
+---------
+
+To install plugin in local Maven repo.
+
+    mvn install
+
+To install plugin in Ambra Maven repo - only versioned artifacts (ie, not snapshots)
+can be deployed to this repo.
 
     mvn deploy
 
-Here the url to browse [Ambra repo](http://maven.ambraproject.org/maven2/release/)
-
-To use the Docker Maven Plugin artifact in the Ambra Maven repository in a
-project, add these dependency and repository sections to pom.xml.
-
-  <dependency>
-    <groupId>org.plos.maven</groupId>
-    <artifactId>docker-maven-plugin</artifactId>
-    <version>1.0.0</version>
-  </dependency>
-  ...
-  <repositories>
-    <repository>
-      <id>ambra</id>
-      <name>Maven 2 Release Repository for Ambra</name>
-      <url>http://maven.ambraproject.org/maven2/release/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+Here is the url to browse [Ambra repo](http://maven.ambraproject.org/maven2/release/)
 
 Testing
 -------
