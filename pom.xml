@@ -89,6 +89,15 @@
           </executions>
         </plugin>
       </plugins>
+
+      <!-- needed to deploy artifacts to maven repo over sftp -->
+      <extensions>
+        <extension>
+          <groupId>org.apache.maven.wagon</groupId>
+          <artifactId>wagon-ssh</artifactId>
+          <version>2.9</version>
+        </extension>
+      </extensions>
     </build>
 
     <dependencies>
@@ -105,5 +114,32 @@
         <scope>provided</scope>
       </dependency>
     </dependencies>
+
+    <!--
+      * repository id points to server entry in settings.xml.
+
+        <servers>
+          <server>
+            <id>ambra</id>
+            <username>maven2</username>
+            <password></password>
+          </server>
+        </servers>
+
+      * credentials in lastpass.com
+      * only versioned releases are deployed to Ambra Maven repo.
+      * browse repo: http://maven.ambraproject.org/maven2/release/
+    -->
+    <distributionManagement>
+      <repository>
+        <id>ambra</id>
+        <name>Maven Release Repository for Ambra</name>
+        <url>sftp://maven.ambraproject.org/home/maven2/repository/release</url>
+      </repository>
+      <snapshotRepository>
+        <id>ambra.snapshot</id>
+        <url>sftp://snapshots-not-deployed</url>
+      </snapshotRepository>
+    </distributionManagement>
 
 </project>
